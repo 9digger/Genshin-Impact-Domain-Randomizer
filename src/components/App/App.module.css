@@ -1,0 +1,175 @@
+.buttons,
+.mainGrid {
+  margin-top: 1rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1.5rem;
+}
+
+.header > * + * {
+  margin-left: 0.8rem;
+  border-left: 1px solid var(--color-fg);
+  padding-left: 0.8rem;
+}
+
+.title {
+  grid-column: 2;
+  padding-inline: 1em;
+  text-align: center;
+  font-weight: 400;
+}
+
+.teams {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(var(--size-card-min-width), 1fr)
+  );
+  justify-content: center;
+  padding: 1rem;
+  gap: var(--size-grid-gap);
+}
+
+.grid.team {
+  grid-template-columns: repeat(4, var(--size-card-min-width));
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, min(var(--size-card-min-width)));
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+/* Modal backdrop styles */
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Make sure it appears above other content */
+}
+
+/* Modal styles */
+.modal {
+  background-color: var(--color-bg-dark); /* Dark background */
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 90vw; /* Set width to 90% of the viewport width (use vw for better control) */
+  max-height: 80vh; /* Limit height to 80% of the viewport */
+  overflow-y: auto; /* Enable vertical scrolling if content exceeds height */
+  animation: fadeIn 0.3s; /* Optional fade-in effect */
+}
+
+/* Modal header styles */
+.modalHeader {
+  display: flex;
+  flex-direction: column; /* Stack title and button vertically */
+  align-items: center; /* Center header horizontally */
+  justify-content: center; /* Center header vertically */
+  margin-bottom: 20px; /* Add some spacing below the header */
+}
+
+.modalHeader h2 {
+  text-align: center; /* Center text within the header */
+}
+
+.modalHeader button {
+  margin: 10px; /* Add margin around buttons for spacing */
+}
+
+/* Optional fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card grid styles inside modal */
+.mainGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Responsive grid */
+  gap: 10px; /* Space between cards */
+  margin-top: 20px; /* Add space above the grid */
+}
+
+/* Optionally add styles for hidden cards */
+.hidden {
+  display: none; /* Hide cards that don't match filters */
+}
+
+.savedPlayers {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.playerCard {
+  width: 60%; /* Set to 80% of the parent container */
+  margin: 10px auto; /* Center the card */
+  padding: 10px; /* Add some padding */
+  display: flex; /* Make it a flex container */
+  justify-content: space-between; /* Space out the contents */
+  border: 1px solid var(--color-fg);
+  border-radius: 8px;
+  align-items: center; /* Center the items vertically */
+  transition: background 0.3s; /* Smooth transition for background color */
+  cursor: pointer; /* Indicate the card is clickable */
+}
+
+.playerCard:hover {
+  background: rgba(200, 200, 200, 0.3); /* Light gray background on hover */
+  transform: scale(1.03);
+}
+
+.playerCard.selected {
+  background: lightblue;
+}
+
+.ownedPlayers {
+  margin: 20px 0; /* Adds spacing */
+  font-size: 1.5rem; /* Increases font size */
+  font-weight: bold; /* Makes it bold */
+}
+
+.buttonGroup {
+  display: flex;        /* Use flexbox for layout */
+  gap: 8px;            /* Optional: Space between buttons */
+  align-items: center; /* Optional: Center the buttons vertically */
+}
