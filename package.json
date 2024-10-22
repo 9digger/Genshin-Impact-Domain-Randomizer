@@ -11,6 +11,7 @@
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
+    "vercel-build": "next build",
     "serve": "vite preview"
   },
   "license": "MIT",
