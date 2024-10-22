@@ -1,0 +1,18 @@
+{
+    "build": {
+      "env": {
+        "NODE_ENV": "production"
+      },
+      "functions": {
+        "api/**/*.ts": {
+          "runtime": "edge"
+        }
+      }
+    },
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "index.html"
+      }
+    ]
+  }
