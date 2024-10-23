@@ -3,14 +3,9 @@ import solidPlugin from 'vite-plugin-solid';
 
 export default defineConfig({
   plugins: [solidPlugin()],
+  base: "/Genshin-Impact-Domain-Randomizer/",
   build: {
     target: 'esnext',
-    assetsInlineLimit: 0,
-    rollupOptions: {
-      output: {
-        assetFileNames: 'assets/[name].[ext]'
-      }
-    }
   },
   server: {
     host: '0.0.0.0',
