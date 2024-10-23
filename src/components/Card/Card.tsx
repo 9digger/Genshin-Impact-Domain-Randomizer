@@ -120,7 +120,6 @@ const InteractiveCard: Component<IInteractiveCard> = props => {
           alt=""
         />
       </div>
-      {slugify(props.character.fullName)}
       <div class={styles.elementsContainer}>
         {props.character.elements.map(element => (
           <img
