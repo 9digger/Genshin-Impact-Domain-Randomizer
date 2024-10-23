@@ -3,7 +3,7 @@ import solidPlugin from 'vite-plugin-solid';
 
 export default defineConfig({
   plugins: [solidPlugin()],
-  base: "/Genshin-Impact-Domain-Randomizer/",
+  base: "/9digger.github.io/",
   build: {
     target: 'esnext',
   },
