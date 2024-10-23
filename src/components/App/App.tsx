@@ -18,8 +18,6 @@ import { Gender, GenshinCharacter, GenshinElement } from '../../types/types';
 import { shuffle } from '../../utils/utils';
 import { teamSize } from '../../utils/const';
 
-import testImage from '../../assets/albedo_test.png';
-
 interface Player {
   name: string;
   characters: GenshinCharacter['id'][]; 
@@ -182,7 +180,6 @@ const App: Component = () => {
       <header class={styles.header}></header>
       <main>
         <h1 class={styles.title}>Genshin Impact Domain Roulette</h1>
-        <img class={styles.emptyImage} src={testImage} alt="Genshin Impact" />
   
         <div class={styles.teams}>
           <div class={`${styles.grid} ${styles.team}`}>

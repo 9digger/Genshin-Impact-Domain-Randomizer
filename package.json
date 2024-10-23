@@ -1,6 +1,6 @@
 {
-  "name": "genshin-impact-team-randomizer",
-  "version": "1.4.6",
+  "name": "genshin-impact-domain-roulette",
+  "version": "1.0.0",
   "description": "A web app to randomize your Genshin Impact team based on the characters that you own",
   "type": "module",
   "files": [
@@ -28,14 +28,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Pustur/genshin-impact-team-randomizer.git"
-  },
-  "author": {
-    "name": "Loris Bettazza",
-    "email": "loris.bettazza@gmail.com"
-  },
-  "bugs": {
-    "url": "https://github.com/Pustur/genshin-impact-team-randomizer/issues"
-  },
-  "homepage": "https://github.com/Pustur/genshin-impact-team-randomizer#readme"
+    "url": "git+https://github.com/9digger/Genshin-Impact-Domain-Randomizer.git"
+  }
 }
