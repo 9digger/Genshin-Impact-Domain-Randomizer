@@ -116,7 +116,7 @@ const InteractiveCard: Component<IInteractiveCard> = props => {
       >
         <img
           class={styles.characterImage}
-          src={`/img/characters/albedo.png`}
+          src={`/img/characters/${slugify(props.character.fullName)}.png`}
           alt=""
         />
       </div>

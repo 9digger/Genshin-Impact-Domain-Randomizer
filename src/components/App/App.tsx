@@ -38,15 +38,6 @@ const App: Component = () => {
   const [savedPlayers, setSavedPlayers] = createSignal<{ name: string; characters: GenshinCharacter['id'][] }[]>([]);
   const [currentPlayer, setCurrentPlayer] = createSignal<{ name: string; characters: GenshinCharacter['id'][] } | null>(null);
   const [selectedPlayers, setSelectedPlayers] = createSignal<string[]>([]);
-  const [loading, setLoading] = createSignal(true);
-
-  const fetchPlayers = async () => {
-    setLoading(true);
-    const response = await fetch('/api/players');
-    const data = await response.json();
-    setSavedPlayers(data);
-    setLoading(false);
-  };
 
   const toggleModal = () => {
     if (currentPlayer()) {
@@ -70,14 +61,6 @@ const App: Component = () => {
       if (playerName) {
         const newPlayer = { name: playerName, characters: selectedCharacters.selectedCharacters };
         setSavedPlayers([...savedPlayers(), newPlayer]);
-
-        await fetch('/api/players', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(newPlayer),
-        });
       }
     }
 
@@ -86,17 +69,51 @@ const App: Component = () => {
     setIsModalOpen(false);
   };
 
+  const exportPlayers = () => {
+    const dataStr = JSON.stringify(savedPlayers(), null, 2); // Convert players to a pretty-printed JSON string
+    const blob = new Blob([dataStr], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'players.json'; // File name
+    a.click();
+    URL.revokeObjectURL(url); // Clean up the URL object
+  };
+
+  const importPlayers = async (event: Event) => {
+    const fileInput = event.target as HTMLInputElement;
+    const file = fileInput.files?.[0];
+    
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        const contents = e.target?.result;
+        if (typeof contents === 'string') {
+          const players = JSON.parse(contents);
+          // Append new players to the existing list without checking for duplicates
+          setSavedPlayers(prevPlayers => [...prevPlayers, ...players]);
+        }
+        // Reset the file input value to allow re-importing the same file
+        fileInput.value = '';
+      };
+      reader.readAsText(file);
+    }
+  };
+
+  let fileInputRef!: HTMLInputElement;;
+
   // Moved filtering functions outside of the loop
-  const isSameElement = (character) => 
+  const isSameElement = (character: GenshinCharacter) => 
     filterElements.length === 0 || filterElements.some(e => character.elements.includes(e as GenshinElement));
   
-  const isSameWeapon = (character) => 
+  const isSameWeapon = (character: GenshinCharacter) => 
     filterWeapons.length === 0 || filterWeapons.some(w => character.weapon.includes(w));
   
-  const isSameGender = (character) => 
+  const isSameGender = (character: GenshinCharacter) => 
     filterGender.length === 0 || filterGender.some(g => character.gender.includes(g as Gender));
   
-  const isSameRarity = (character) => 
+  const isSameRarity = (character: GenshinCharacter) => 
     filterRarity.length === 0 || filterRarity.includes(character.stars);
   
   const selectAllCharacters = () => {
@@ -115,10 +132,6 @@ const App: Component = () => {
   const deselectAllCharacters = () => {
     setSelectedCharacters({ selectedCharacters: [] });
   };
-
-  onMount(() => {
-    fetchPlayers();
-  });
 
   const closeModal = () => {
     setCurrentPlayer(null);
@@ -176,11 +189,17 @@ const App: Component = () => {
         <div class={styles.buttons}>
           <Button onClick={generateTeams}>Generate teams</Button>
           <Button onClick={toggleModal}>Add Player</Button>
+          <Button onClick={exportPlayers}>Export Players</Button>
+          <input
+            type="file"
+            accept=".json"
+            onChange={importPlayers}
+            class={styles.fileInput}
+            style={{ display: 'none' }} // Hide the input
+            ref={(el) => (fileInputRef = el!)} // Store the file input reference
+          />
+          <Button onClick={() => fileInputRef.click()}>Import Players</Button> {/* Trigger file input on click */}
         </div>
-
-        <Show when={loading()}>
-          <div>Loading...</div>
-        </Show>
   
         <div class={styles.savedPlayers}>
           <h2>Saved Players</h2>
@@ -191,8 +210,10 @@ const App: Component = () => {
                 onClick={() => togglePlayerSelection(player.name)}
               >
                 <span>{player.name} (Total Characters: {player.characters.length})</span>
-                <Button onClick={() => editPlayer(player)}>Edit Player</Button>
-                <Button onClick={() => removePlayer(player.name)}>Remove</Button>
+                <div class={styles.buttonGroup}> {/* New button group container */}
+                  <Button onClick={() => editPlayer(player)}>Edit Player</Button>
+                  <Button onClick={() => removePlayer(player.name)}>Remove</Button>
+                </div>
               </div>
             )}
           </For>

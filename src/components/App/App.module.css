@@ -154,12 +154,12 @@
 }
 
 .playerCard:hover {
-  background: rgba(200, 200, 200, 0.3); /* Light gray background on hover */
+  background: rgba(200, 200, 200, 0.1); /* Light gray background on hover */
   transform: scale(1.03);
 }
 
 .playerCard.selected {
-  background: lightblue;
+  background: rgba(203, 205, 236, 0.3);
 }
 
 .ownedPlayers {
@@ -170,6 +170,6 @@
 
 .buttonGroup {
   display: flex;        /* Use flexbox for layout */
-  gap: 8px;            /* Optional: Space between buttons */
-  align-items: center; /* Optional: Center the buttons vertically */
+  justify-content: flex-end; /* Aligns buttons to the right */
+  gap: 0.5rem; /* Space between buttons */
 }
