@@ -75,7 +75,7 @@ const DisplayCard: Component<IDisplayCard> = props => {
       >
         <img
           class={styles.characterImage}
-          src={`/img/characters/${slugify(props.character.fullName)}.png`}
+          src={`https://media.githubusercontent.com/media/9digger/Genshin-Impact-Domain-Randomizer/main/public/img/characters/${slugify(props.character.fullName)}.png`}
           alt=""
         />
       </div>
@@ -116,7 +116,7 @@ const InteractiveCard: Component<IInteractiveCard> = props => {
       >
         <img
           class={styles.characterImage}
-          src={`\\img\\characters\\${slugify(props.character.fullName)}.png`}
+          src={`https://media.githubusercontent.com/media/9digger/Genshin-Impact-Domain-Randomizer/main/public/img/characters/${slugify(props.character.fullName)}.png`}
           alt=""
         />
       </div>
