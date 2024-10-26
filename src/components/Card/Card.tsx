@@ -47,7 +47,7 @@ const EmptyCard: Component = () => {
   return (
     <>
       <div class={styles.imageHolder}>
-        <img class={styles.emptyImage} src="/img/icons/empty.svg" alt="" />
+        <img class={styles.emptyImage} src="https://media.githubusercontent.com/media/9digger/Genshin-Impact-Domain-Randomizer/main/public/img/icons/empty.svg" alt="" />
       </div>
       <div class={styles.name}>--</div>
     </>
@@ -82,7 +82,7 @@ const DisplayCard: Component<IDisplayCard> = props => {
       <div class={styles.elementsContainer}>
         <img
           class={styles.element}
-          src={`/img/icons/elements/${element()}.svg`}
+          src={`https://media.githubusercontent.com/media/9digger/Genshin-Impact-Domain-Randomizer/main/public/img/icons/elements/${element()}.svg`}
           alt=""
         />
       </div>
@@ -124,7 +124,7 @@ const InteractiveCard: Component<IInteractiveCard> = props => {
         {props.character.elements.map(element => (
           <img
             class={styles.element}
-            src={`/img/icons/elements/${element}.svg`}
+            src={`https://media.githubusercontent.com/media/9digger/Genshin-Impact-Domain-Randomizer/main/public/img/icons/elements/${element}.svg`}
             alt=""
           />
         ))}
