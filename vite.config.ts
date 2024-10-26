@@ -3,7 +3,6 @@ import solidPlugin from 'vite-plugin-solid';
 
 export default defineConfig({
   plugins: [solidPlugin()],
-  base: "/9digger.github.io/",
   build: {
     target: 'esnext',
   },
