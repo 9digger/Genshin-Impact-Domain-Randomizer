@@ -3,6 +3,12 @@ import solidPlugin from 'vite-plugin-solid';
 
 export default defineConfig({
   plugins: [solidPlugin()],
+  assetsInclude: [
+    '**/*.png',
+    '**/*.svg',
+    '**/*.woff',
+    '**/*.woff2',
+  ],
   build: {
     target: 'esnext',
   },

@@ -6,8 +6,6 @@ import {
   onMount,
 } from 'solid-js';
 
-import albedo from '/img/characters/albedo.png'
-
 import styles from './Card.module.css';
 import { nextFrame, shuffle, slugify } from '../../utils/utils';
 import { GenshinCharacter } from '../../types/types';
@@ -77,7 +75,7 @@ const DisplayCard: Component<IDisplayCard> = props => {
       >
         <img
           class={styles.characterImage}
-          src={albedo}
+          src={`/img/characters/${slugify(props.character.fullName)}.png`}
           alt=""
         />
       </div>

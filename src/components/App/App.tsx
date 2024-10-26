@@ -179,7 +179,7 @@ const App: Component = () => {
     <>
       <header class={styles.header}></header>
       <main>
-        <h1 class={styles.title}>Genshin Impact Domain Roulette!!</h1>
+        <h1 class={styles.title}>Genshin Impact Domain Roulette</h1>
   
         <div class={styles.teams}>
           <div class={`${styles.grid} ${styles.team}`}>
