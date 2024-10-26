@@ -82,7 +82,7 @@ const DisplayCard: Component<IDisplayCard> = props => {
       <div class={styles.elementsContainer}>
         <img
           class={styles.element}
-          src={`https://media.githubusercontent.com/media/9digger/Genshin-Impact-Domain-Randomizer/main/public/img/icons/elements/${element()}.svg`}
+          src={`https://raw.githubusercontent.com/9digger/Genshin-Impact-Domain-Randomizer/24e1d1433585b4cb23b252deee7c66795ac33215/public/img/icons/elements/${element()}.svg`}
           alt=""
         />
       </div>
@@ -124,7 +124,7 @@ const InteractiveCard: Component<IInteractiveCard> = props => {
         {props.character.elements.map(element => (
           <img
             class={styles.element}
-            src={`https://media.githubusercontent.com/media/9digger/Genshin-Impact-Domain-Randomizer/main/public/img/icons/elements/${element}.svg`}
+            src={`https://raw.githubusercontent.com/9digger/Genshin-Impact-Domain-Randomizer/24e1d1433585b4cb23b252deee7c66795ac33215/public/img/icons/elements/${element}.svg`}
             alt=""
           />
         ))}
